@@ -15,7 +15,7 @@ def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise NotaFruitError 
+    raise NotaFruitError
   end 
 end
 
@@ -26,17 +26,23 @@ def feed_me_a_fruit
     maybe_fruit = gets.chomp
     reaction(maybe_fruit) 
   rescue NotaFruitError
-    puts "Do you want to feed me coffee? (y/n)"
+    puts "I don't like this. Feed me coffee >:( (Agree? y/n)"
     maybe_coffee = gets.chomp
     retry if maybe_coffee == "y"
+  ensure
+    puts "Fi fi fo fum"
   end
 end  
 
 class NotaFruitError < StandardError; end
+
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     @name = name
+    if yrs_known < 5
+      raise "You can't be best friends if you haven't known each other for 5 years"
+    end
     @yrs_known = yrs_known
     @fav_pastime = fav_pastime
   end
