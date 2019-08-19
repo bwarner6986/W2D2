@@ -6,6 +6,13 @@ class Manager < Employee
     super 
     @employees = []
   end
-  
+
+  def bonus(multiplier)
+    employees_salary_sum = 0
+    @employees.each do |employee|
+      employees_salary_sum += employee.salary
+    end
+    bonus = employees_salary_sum * multiplier
+  end
 
 end
