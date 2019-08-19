@@ -1,21 +1,33 @@
 require_relative 'piece'
+# require_relative './null_piece.rb'
+require 'byebug'
 
 class Board
 
   def initialize
     @grid = Array.new(8) {Array.new(8)}
     
-    @grid.each_with_index do |row, row_idx|
-      row.each do |col|
-        if [0, 1, 7, 8].include?(row_idx)
-          col = Piece.new
-        else
-          col = NullPiece.new
+    # @grid.each_with_index do |row, row_idx|
+    #   debugger
+    #   row.each do |col|
+    #     debugger
+    #     if [0, 1, 6 ,7].include?(row_idx)
+    #       debugger
+    #       col = Piece.new
+    #     # else
+    #     #   col = NullPiece.new
+    #     end
+    #   end
+
+    (0..7).each do |i|
+      (0..7).each do |j|
+        if [0, 1, 6 ,7].include?(i)
+          @grid[i][j] = Piece.new
         end
       end
     end
 
-    private
+    # private
   end
 
   def move_piece(start_pos, end_pos)
@@ -34,9 +46,13 @@ class Board
   end
 
   def [](pos)
+    x, y = pos
+    @grid[x][y]
   end
 
   def []=(pos, val)
+    x, y = pos
+    @grid[x][y] = val
   end
 
   def valid_pos?(pos)
