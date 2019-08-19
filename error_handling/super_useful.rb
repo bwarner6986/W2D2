@@ -15,18 +15,24 @@ def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
   else 
-    raise StandardError 
+    raise NotaFruitError 
   end 
 end
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
-
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+  begin
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
+    reaction(maybe_fruit) 
+  rescue NotaFruitError
+    puts "Do you want to feed me coffee? (y/n)"
+    maybe_coffee = gets.chomp
+    retry if maybe_coffee == "y"
+  end
 end  
 
+class NotaFruitError < StandardError; end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
