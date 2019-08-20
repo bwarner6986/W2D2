@@ -7,7 +7,13 @@ class Pawn < Piece
   end
 
   def move_dirs
-
+    dirs = Array.new
+    cur_x, cur_y = pos
+    dx = forward_dir * forward_steps
+    fut_pos = [cur_x + dx, cur_y]
+    dirs << fut_pos
+    dirs += side_attacks
+    dirs
   end
 
   private
@@ -20,10 +26,14 @@ class Pawn < Piece
   end
 
   def forward_steps
-    at_start_row? ? [1, 2] : [1]
+    at_start_row? ? 2 : 1
   end
 
   def side_attacks
+    cur_x, cur_y = pos
+    dx = forward_dir * 1
+    sides = [[cur_x + dx, cur_y + 1], [cur_x + dx, cur_y - 1]] 
+    sides.select { |pos| pos unless board[pos].color == self.color || board[pos].color == :colorless }
   end
 
 end

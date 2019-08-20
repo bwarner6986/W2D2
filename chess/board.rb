@@ -69,7 +69,7 @@ class Board
 
   def valid_pos?(pos)
     x, y = pos
-    return (0..7).include?(x) && (0..7).include?(y) && grid[x][y].nil?
+    return (0..7).include?(x) && (0..7).include?(y) && grid[x][y] = @sentinel
   end
 
   def add_piece(piece, pos)
