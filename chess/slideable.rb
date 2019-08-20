@@ -1,6 +1,6 @@
-module Slidable
+module Slideable
 
-  attr_reader :HORIZONTAL_DIRS, :DIAGONAL_DIRS
+  attr_reader 
 
   def moves 
 
@@ -28,5 +28,5 @@ module Slidable
   def grow_unblocked_moves_in_dir(dx, dy)
   
   end
-  
+
 end

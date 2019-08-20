@@ -10,9 +10,23 @@ class Board
 
     (0..7).each do |i|
       (0..7).each do |j|
-        if [0, 1, 6 ,7].include?(i)
-          grid[i][j] = Piece.new
+        # if [0, 1, 6 ,7].include?(i)
+        if i == 0 || i == 7
+          if j == 0 || j == 7
+            grid[i][j] = Rook.new
+          elsif j == 1 || j == 6
+            grid[i][j] = Knight.new
+          elsif j == 2 || j == 5
+            grid[i][j] = Bishop.new
+          elsif j == 3
+            grid[i][j] = King.new
+          elsif j == 4
+            grid[i][j] = Queen.new
+          end
+        elsif i == 1 || i == 6
+          grid[i][j] = Pawn.new
         end
+        # grid[i][j] = Piece.new
       end
     end
 
