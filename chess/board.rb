@@ -1,5 +1,12 @@
 require_relative 'piece'
 require 'byebug'
+require_relative 'rook'
+require_relative 'knight'
+require_relative 'bishop'
+require_relative 'king'
+require_relative 'queen'
+require_relative 'pawn'
+require_relative 'null_piece'
 
 class Board
 
@@ -9,22 +16,23 @@ class Board
     @grid = Array.new(8) {Array.new(8)}
 
     (0..7).each do |i|
+      color = [0, 1].include?(i) ? :black : :white
       (0..7).each do |j|
         # if [0, 1, 6 ,7].include?(i)
         if i == 0 || i == 7
           if j == 0 || j == 7
-            grid[i][j] = Rook.new
+            grid[i][j] = Rook.new(color, self, [i,j])
           elsif j == 1 || j == 6
-            grid[i][j] = Knight.new
+            grid[i][j] = Knight.new(color, self, [i,j])
           elsif j == 2 || j == 5
-            grid[i][j] = Bishop.new
+            grid[i][j] = Bishop.new(color, self, [i,j])
           elsif j == 3
-            grid[i][j] = King.new
+            grid[i][j] = King.new(color, self, [i,j])
           elsif j == 4
-            grid[i][j] = Queen.new
+            grid[i][j] = Queen.new(color, self, [i,j])
           end
         elsif i == 1 || i == 6
-          grid[i][j] = Pawn.new
+          grid[i][j] = Pawn.new(color, self, [i,j])
         end
         # grid[i][j] = Piece.new
       end
