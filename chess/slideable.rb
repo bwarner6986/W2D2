@@ -6,8 +6,8 @@ module Slideable
       possible_moves << grow_unblocked_moves_in_dir(dx, dy)
     end
 
-    # possible_moves << new_pos
-    end
+    # # possible_moves << new_pos
+    # end
   possible_moves.flatten(1)
   end
 
@@ -41,9 +41,9 @@ module Slideable
   def grow_unblocked_moves_in_dir(dx, dy)
     moves_grown = []
     cur_x, cur_y = pos
-    until board([cur_x, cur_y]).color != :colorless || [cur_x, cuy_y].any? {|cord| cord < 0 || cord > 7}
+    until board[[cur_x, cur_y]].color != :colorless || [cur_x, cuy_y].any? {|cord| cord < 0 || cord > 7}
       fut_x, fut_y = cur_x + dx, cur_y + dy
-      if board([fut_x, fut_y]).color != self.color
+      if board[[fut_x, fut_y]].color != self.color
         moves_grown << [fut_x, fut_y]
         cur_x, cur_y = fut_x, fut_y
       else

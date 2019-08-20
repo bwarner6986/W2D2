@@ -7,7 +7,7 @@ module Stepable
       new_pos = [cur_x + dx, cur_y + dy]
       possible_moves << new_pos
     end
-    possible_moves
+    possible_moves.select { |pos| pos.all? { |coor| coor >= 0 && coor <= 7} && self.board[pos].color != self.color }
   end
 
   private
