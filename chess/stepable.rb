@@ -6,6 +6,6 @@ module Stepable
 
   private
   def move_diffs
-  
+    raise "You forgot to build move_diffs!!!"
   end
 end

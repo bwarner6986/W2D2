@@ -3,6 +3,7 @@ require_relative 'piece'
 class Pawn < Piece
 
   def symbol
+    @symbol = color == :black ? "♟" : "♙"
   end
 
   def move_dirs

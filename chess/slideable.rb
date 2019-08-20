@@ -22,7 +22,7 @@ module Slideable
   ]
 
   def move_dirs
-
+    raise "You forgot to build move_dirs!!!"
   end
 
   def grow_unblocked_moves_in_dir(dx, dy)
