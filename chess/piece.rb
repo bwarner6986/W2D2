@@ -1,9 +1,9 @@
 class Piece
 
-  def initialize
-    # @color = color
-    # @board = board
-    # @pos = pos
+  def initialize(color, board, pos)
+    @color = color
+    @board = board
+    @pos = pos
   end
 
   def to_s
@@ -12,7 +12,7 @@ class Piece
   def empty?
   end
 
-  def valid_moves
+  def valid_moves #moves
   end
 
   def pos=(val)
