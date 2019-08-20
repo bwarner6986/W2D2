@@ -1,3 +1,5 @@
+require 'byebug'
+
 module Slideable
 
   def moves 
@@ -42,6 +44,7 @@ module Slideable
     moves_grown = []
     cur_x, cur_y = pos
     until board[[cur_x, cur_y]].color != :colorless || [cur_x, cuy_y].any? {|cord| cord < 0 || cord > 7}
+    debugger
       fut_x, fut_y = cur_x + dx, cur_y + dy
       if board[[fut_x, fut_y]].color != self.color
         moves_grown << [fut_x, fut_y]

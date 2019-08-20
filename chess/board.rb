@@ -47,11 +47,12 @@ class Board
     x_end, y_end = end_pos
     piece = grid[x_start][y_start] 
 
-    raise "This position is empty!" if piece.nil?
+    raise "This position is empty!" if piece.is_a?(NullPiece)
     raise "Not a valid move" unless valid_pos?(end_pos)
 
     grid[x_end][y_end] = piece
-    grid[x_start][y_start] = nil
+    piece.pos = end_pos
+    grid[x_start][y_start] = @sentinel
   end
 
   def move_piece!(start_pos, end_pos)
