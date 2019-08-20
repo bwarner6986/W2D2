@@ -15,10 +15,11 @@ class Board
   def initialize
     @grid = Array.new(8) {Array.new(8)}
 
+    @sentinel = NullPiece.instance
+
     (0..7).each do |i|
       color = [0, 1].include?(i) ? :black : :white
       (0..7).each do |j|
-        # if [0, 1, 6 ,7].include?(i)
         if i == 0 || i == 7
           if j == 0 || j == 7
             grid[i][j] = Rook.new(color, self, [i,j])
@@ -33,8 +34,9 @@ class Board
           end
         elsif i == 1 || i == 6
           grid[i][j] = Pawn.new(color, self, [i,j])
+        else
+          grid[i][j] = @sentinel
         end
-        # grid[i][j] = Piece.new
       end
     end
 
